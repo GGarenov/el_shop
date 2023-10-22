@@ -16,11 +16,6 @@ app.engine("hbs", handlebars.engine({ extname: "hbs" }));
 app.set("view engine", "hbs");
 app.set("views", "src/views");
 
-//Define home route
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
 //Routes
 app.use(routes);
 
