@@ -21,8 +21,12 @@ router.get("/login", (req, res) => {
   res.render("users/login");
 });
 
-router.post("/login", (req, res) => {
-  console.log(req.body);
+router.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  await userService.login(email, password);
+
+  res.redirect("/");
 });
 
 //TO DO: provide logout endpoint
