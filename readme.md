@@ -13,3 +13,6 @@
     - create first User record in the db
     - validate password
     - validate email
+9. Hash password
+    - install bcrypt
+    - hash password
