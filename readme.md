@@ -7,3 +7,9 @@
 5. Mongoose was installed and connections were moved in external file called constants.js
 6. Make nav bar visible for logged users and guest users
 7. Error message in home page - In case of error, you should display div with class "errorContainer"
+8. Add User model
+    - simple validation in Schema
+    - add method for register
+    - create first User record in the db
+    - validate password
+    - validate email
