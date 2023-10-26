@@ -28,3 +28,5 @@
     - config cookie-parser
     - set cookie with the token
 
+12. Implement logout
+
