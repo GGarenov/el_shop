@@ -10,12 +10,13 @@
 <body>
     <!-- In case of error, you should display div with class "errorContainer" -->
     <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-
-    <!-- <div>
+    {{#each errorMessage}}
+    <div>
         <div class="errorContainer">
-            <p>Error</p>
+            <p>{{this}}</p>
         </div>
-    </div> -->
+    </div>
+    {{/each}}
 
     <div id="container">
 
