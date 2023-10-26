@@ -30,3 +30,10 @@
 
 12. Implement logout
 
+13. Authentication middleware
+    - create middleware directory
+    - add auth middleware and import it in express config below cookieParser
+    - decode the token
+    - handle invalid token
+    - provide authorization
+
