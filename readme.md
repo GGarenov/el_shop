@@ -16,3 +16,9 @@
 9. Hash password
     - install bcrypt
     - hash password
+
+10. Generate jsonwebtoker
+    - install jsonwebtoken
+    - promisify jsonwebtoken
+    - generate secret
+    - generate token in service login
