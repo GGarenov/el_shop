@@ -17,21 +17,25 @@
                     <h2>Price: {{electronic.price}}</h2>
                 </div>
 
-                <!--If there is user logged in-->
-
+                <!-- If there is user logged in -->
+                {{#if isAuthenticated}}
                 <div class="buttons">
 
-                    <!--If user is not owner of the toy post-->
+                    <!-- If user is not the owner of the electronic item -->
+                    {{#unless isOwner}}
                     <a href="#" class="buy-btn">Buy</a>
-
-                    <!--If user is owner-->
+                    {{else}}
                     <a href="#" class="edit-btn">Edit</a>
                     <a href="#" class="delete-btn">Delete</a>
+                    {{/unless}}
 
-                    <!--If user is not the owner and is bought this toy-->
+                    <!-- If user is not the owner and has bought this electronic item -->
                     <p><span class="buy">Thank You For Your Purchase</span></p>
                 </div>
+                {{/if}}
+
             </div>
+
         </section>
 
 

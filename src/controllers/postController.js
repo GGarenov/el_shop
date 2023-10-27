@@ -24,7 +24,11 @@ router.get("/:electronicId/details", async (req, res) => {
   const { electronicId } = req.params;
   const electronic = await electronicService.getById(electronicId).lean();
 
-  res.render("posts/details", { electronic });
+  const { user } = req;
+  const { owner } = electronic;
+  const isOwner = user?._id === owner.toString();
+
+  res.render("posts/details", { electronic, isOwner });
 });
 
 module.exports = router;
