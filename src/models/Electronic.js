@@ -9,6 +9,10 @@ const electronicSchema = new mongoose.Schema({
   production: { type: Number, required: true },
   exploit: { type: Number },
   price: { type: Number },
+  owner: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Electronic = mongoose.model("Electronic", electronicSchema);

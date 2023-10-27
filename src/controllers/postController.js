@@ -4,6 +4,7 @@ const { isAuth } = require("./../middlewares/authMiddleware");
 
 router.get("/all", async (req, res) => {
   const electronics = await electronicService.getAll().lean();
+  console.log({ electronics });
   res.render("posts/catalog", { electronics });
 });
 
@@ -13,7 +14,10 @@ router.get("/create", isAuth, (req, res) => {
 
 router.post("/create", async (req, res) => {
   const { name, type, damages, imageUrl, description, production, exploit, price } = req.body;
-  const payload = { name, type, damages, imageUrl, description, production, exploit, price };
+  console.log(req);
+  const payload = { name, type, damages, imageUrl, description, production, exploit, price, owner: req.user };
+
+  // TO DO: Add user
   await electronicService.create(payload);
   res.redirect("/posts/all");
 });
