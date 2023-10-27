@@ -40,3 +40,8 @@
 14. Electronic model was created.
     - All posts pages were moved in another folder called posts. 
     - Hrefs in main.hbs and in create.hbs were fixed.
+
+15. Create functionality
+    - electronicService was made
+    - postController was made and fixed
+    - Create Electronic was successful.
