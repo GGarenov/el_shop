@@ -14,12 +14,17 @@ router.get("/create", isAuth, (req, res) => {
 
 router.post("/create", async (req, res) => {
   const { name, type, damages, imageUrl, description, production, exploit, price } = req.body;
-  console.log(req);
   const payload = { name, type, damages, imageUrl, description, production, exploit, price, owner: req.user };
 
-  // TO DO: Add user
   await electronicService.create(payload);
   res.redirect("/posts/all");
+});
+
+router.get("/:electronicId/details", async (req, res) => {
+  const { electronicId } = req.params;
+  const electronic = await electronicService.getById(electronicId).lean();
+
+  res.render("posts/details", { electronic });
 });
 
 module.exports = router;
