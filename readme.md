@@ -37,3 +37,6 @@
     - handle invalid token
     - provide authorization
 
+14. Electronic model was created.
+    - All posts pages were moved in another folder called posts. 
+    - Hrefs in main.hbs and in create.hbs were fixed.
