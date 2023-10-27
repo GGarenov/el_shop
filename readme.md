@@ -45,3 +45,6 @@
     - electronicService was made
     - postController was made and fixed
     - Create Electronic was successful.
+
+16. All posts - Catalog
+    
