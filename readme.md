@@ -56,6 +56,8 @@
 18. Fix the edit button
     - make edit.hbs and fix the links in it
     - make routes working
-    -- STILL IT IS NOT FIXED!!
+    - done with edit.hbs (I set name attributes)
 
 19. Delete functionality
+
+20. Search Bar functionality

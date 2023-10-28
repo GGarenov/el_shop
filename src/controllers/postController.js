@@ -64,4 +64,20 @@ router.get("/:electronicId/delete", async (req, res) => {
   res.redirect("/posts/all");
 });
 
+router.get("/search", async (req, res) => {
+  const { search, name, type } = req.query;
+
+  let electronics = await electronicService.getAll().lean();
+  let filteredElectronics = [];
+
+  if (search || name || type) {
+    filteredElectronics = electronicService.searchElectronic(electronics, search, name, type);
+  } else {
+    // If no search parameters are provided, display all electronics
+    filteredElectronics = electronics;
+  }
+
+  res.render("posts/search", { electronics: filteredElectronics, search, name, type });
+});
+
 module.exports = router;
