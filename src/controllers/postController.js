@@ -57,4 +57,11 @@ router.post("/:electronicId/edit", async (req, res) => {
   res.redirect(`/posts/${electronicId}/details`);
 });
 
+router.get("/:electronicId/delete", async (req, res) => {
+  const { electronicId } = req.params;
+
+  await electronicService.delete(electronicId);
+  res.redirect("/posts/all");
+});
+
 module.exports = router;
