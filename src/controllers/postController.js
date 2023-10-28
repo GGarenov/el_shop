@@ -34,7 +34,7 @@ router.get("/:electronicId/details", async (req, res) => {
 router.get("/:electronicId/edit", async (req, res) => {
   const { electronicId } = req.params;
 
-  const electronic = await electronicService.getById(electronicId).lean();
+  const electronic = await electronicService.singleElectronic(electronicId).lean();
   res.render("posts/edit", { electronic });
 });
 

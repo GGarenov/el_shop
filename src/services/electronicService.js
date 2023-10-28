@@ -9,3 +9,5 @@ exports.getById = (electronicId) => Electronic.findById(electronicId);
 exports.update = (electronicId, electronicData) => Electronic.findByIdAndUpdate(electronicId, electronicData);
 
 exports.delete = (electronicId) => Electronic.findByIdAndDelete(electronicId);
+
+exports.singleElectronic = (electronicId) => Electronic.findById(electronicId);
