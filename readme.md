@@ -56,3 +56,6 @@
 18. Fix the edit button
     - make edit.hbs and fix the links in it
     - make routes working
+    -- STILL IT IS NOT FIXED!!
+
+19. Delete functionality
