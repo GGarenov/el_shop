@@ -38,4 +38,23 @@ router.get("/:electronicId/edit", async (req, res) => {
   res.render("posts/edit", { electronic });
 });
 
+router.post("/:electronicId/edit", async (req, res) => {
+  const { electronicId } = req.params;
+  const { name, type, damages, imageUrl, description, production, exploit, price } = req.body;
+  const payload = {
+    name,
+    type,
+    damages,
+    imageUrl,
+    description,
+    production,
+    exploit,
+    price,
+    owner: req.user,
+  };
+
+  await electronicService.update(electronicId, payload);
+  res.redirect(`/posts/${electronicId}/details`);
+});
+
 module.exports = router;
