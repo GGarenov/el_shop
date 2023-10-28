@@ -47,4 +47,12 @@
     - Create Electronic was successful.
 
 16. All posts - Catalog
-    
+
+17. Details page implementation
+    - If the user is the owner of the post should have "Edit" and "Delete" button
+    - If the user hasn't logged in - no buttons
+    - If the user is not the owner -> buy button
+
+18. Fix the edit button
+    - make edit.hbs and fix the links in it
+    - make routes working
