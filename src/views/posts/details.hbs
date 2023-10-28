@@ -25,8 +25,8 @@
                     {{#unless isOwner}}
                     <a href="#" class="buy-btn">Buy</a>
                     {{else}}
-                    <a href="#" class="edit-btn">Edit</a>
-                    <a href="#" class="delete-btn">Delete</a>
+                    <a href="/posts/{{electronic._id}}/edit" class="edit-btn">Edit</a>
+                    <a href="/posts/{{electronic._id}}/delete" class="delete-btn">Delete</a>
                     {{/unless}}
 
                     <!-- If user is not the owner and has bought this electronic item -->
