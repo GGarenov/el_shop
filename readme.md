@@ -64,5 +64,5 @@
 
 21. Error Handling
 - add error message util
-
-
+- show in the main layout
+- pass error to render
