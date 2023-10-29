@@ -40,3 +40,7 @@ exports.login = async (email, password) => {
   const token = await getToken(user);
   return token;
 };
+
+exports.isOwner = (userId, postOwnerId) => {
+  return userId.toString() === postOwnerId.toString();
+};

@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const electronicService = require("../services/electronicService");
 const { isAuth } = require("./../middlewares/authMiddleware");
+const userService = require("../services/userService");
 
 router.get("/all", async (req, res) => {
   const electronics = await electronicService.getAll().lean();
@@ -25,8 +26,10 @@ router.get("/:electronicId/details", async (req, res) => {
   const electronic = await electronicService.getById(electronicId).lean();
 
   const { user } = req;
-  const { owner } = electronic;
-  const isOwner = user?._id === owner.toString();
+  // const { owner } = electronic;
+  // const isOwner = user?._id === owner.toString();
+
+  const isOwner = userService.isOwner(user._id, electronic.owner);
 
   res.render("posts/details", { electronic, isOwner });
 });
