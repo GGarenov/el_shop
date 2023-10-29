@@ -28,7 +28,10 @@ router.get("/:electronicId/details", async (req, res) => {
   const { user } = req;
   const { owner } = electronic;
   const isOwner = user?._id === owner.toString();
-  const hasBought = electronic.buy?.some((b) => b?.toString() === user?._id);
+  const hasBought = electronic.buy?.some((b) => b._id.toString() === user._id);
+  console.log(hasBought);
+  console.log(electronic.buy);
+  console.log(user?._id);
 
   res.render("posts/details", { electronic, isOwner, hasBought });
 });

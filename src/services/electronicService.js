@@ -45,8 +45,6 @@ exports.addBuyToElectronic = async (electronicId, userId) => {
 
     const existingBuy = electronic.buy.find((b) => b.equals(userId)); // Compare ObjectIDs directly
 
-    console.log({ isUserExistingInBuy: !!existingBuy });
-
     if (!existingBuy) {
       electronic.buy.push(userId);
       await electronic.save();

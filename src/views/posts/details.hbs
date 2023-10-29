@@ -18,14 +18,14 @@
                 <div class="buttons">
                     <!-- If the user is not the owner of the electronic item -->
                     {{#unless isOwner}}
-
+                    {{#unless hasBought}} <!-- Check if user has not bought -->
                     <a href="/posts/{{electronic._id}}/buy" class="buy-btn">Buy</a>
+                    {{/unless}}
                     {{else}}
                     <a href="/posts/{{electronic._id}}/edit" class="edit-btn">Edit</a>
                     <a href="/posts/{{electronic._id}}/delete" class="delete-btn">Delete</a>
                     <!-- Add additional logic based on specific conditions (if bought) -->
                     {{/unless}}
-
                     <!-- Display a message if the user is not the owner and has bought this electronic item -->
                     {{#if hasBought}}
                     <p><span class="buy">Thank You For Your Purchase</span></p>
