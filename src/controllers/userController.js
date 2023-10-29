@@ -20,7 +20,6 @@ router.post("/register", async (req, res) => {
     await userService.login(email, password);
 
     res.cookie("token", token, { httpOnly: true });
-    res.redirect("/");
 
     res.redirect("/users/login");
   } catch (error) {
