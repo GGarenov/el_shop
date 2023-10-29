@@ -66,3 +66,4 @@
 - add error message util
 - show in the main layout
 - pass error to render
+- error handler in login and register pages
