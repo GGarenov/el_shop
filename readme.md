@@ -61,3 +61,8 @@
 19. Delete functionality
 
 20. Search Bar functionality
+
+21. Error Handling
+- add error message util
+
+
