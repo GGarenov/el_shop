@@ -5,7 +5,7 @@ const userService = require("../services/userService");
 
 router.get("/all", async (req, res) => {
   const electronics = await electronicService.getAll().lean();
-  console.log({ electronics });
+
   res.render("posts/catalog", { electronics });
 });
 
@@ -23,15 +23,14 @@ router.post("/create", async (req, res) => {
 
 router.get("/:electronicId/details", async (req, res) => {
   const { electronicId } = req.params;
-  const electronic = await electronicService.getById(electronicId).lean();
+  const electronic = await electronicService.singleElectronic(electronicId).lean();
 
   const { user } = req;
-  // const { owner } = electronic;
-  // const isOwner = user?._id === owner.toString();
+  const { owner } = electronic;
+  const isOwner = user?._id === owner.toString();
+  const hasBought = electronic.buy?.some((b) => b?.toString() === user?._id);
 
-  const isOwner = userService.isOwner(user._id, electronic.owner);
-
-  res.render("posts/details", { electronic, isOwner });
+  res.render("posts/details", { electronic, isOwner, hasBought });
 });
 
 router.get("/:electronicId/edit", async (req, res) => {
@@ -81,6 +80,15 @@ router.get("/search", async (req, res) => {
   }
 
   res.render("posts/search", { electronics: filteredElectronics, search, name, type });
+});
+
+router.get("/:electronicId/buy", async (req, res) => {
+  const { electronicId } = req.params;
+  const { _id } = req.user;
+
+  await electronicService.addBuyToElectronic(electronicId, _id);
+
+  res.redirect(`/posts/${electronicId}/details`);
 });
 
 module.exports = router;

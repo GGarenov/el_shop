@@ -10,7 +10,7 @@ exports.update = (electronicId, electronicData) => Electronic.findByIdAndUpdate(
 
 exports.delete = (electronicId) => Electronic.findByIdAndDelete(electronicId);
 
-exports.singleElectronic = (electronicId) => Electronic.findById(electronicId);
+exports.singleElectronic = (electronicId) => Electronic.findById(electronicId).populate("buy");
 
 exports.searchElectronic = (electronics, search, name, type) => {
   let filteredElectronics = [...electronics];
@@ -37,4 +37,24 @@ exports.searchElectronic = (electronics, search, name, type) => {
   }
 
   return filteredElectronics;
+};
+
+exports.addBuyToElectronic = async (electronicId, userId) => {
+  try {
+    const electronic = await this.singleElectronic(electronicId);
+
+    const existingBuy = electronic.buy.find((b) => b.equals(userId)); // Compare ObjectIDs directly
+
+    console.log({ isUserExistingInBuy: !!existingBuy });
+
+    if (!existingBuy) {
+      electronic.buy.push(userId);
+      await electronic.save();
+    }
+
+    return electronic;
+  } catch (error) {
+    console.error("Error in addBuyToElectronic:", error);
+    return null;
+  }
 };
